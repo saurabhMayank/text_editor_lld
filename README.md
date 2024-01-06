@@ -2,7 +2,7 @@
 LLD of a text Editor
 
 Class Diagram
-![class_diagram_text_editor_2](https://github.com/saurabhMayank/text_editor_lld/assets/82028762/236840c3-6339-470d-808e-1789b5fb03aa)
+![class_diagram_text_editor_3](https://github.com/saurabhMayank/text_editor_lld/assets/82028762/b46aad67-c99d-4daa-9218-e32f7599a087)
 
 
 **Basic Flow of Text Editor**
