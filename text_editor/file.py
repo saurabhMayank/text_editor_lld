@@ -29,8 +29,8 @@ class File:
             self.display_file()
     
     def insert_text_multiple_lines(self, text_line_dict: dict):
-        for line_num, text in text_line_dict:
-            insert_text(line_num, text)
+        for line_num, text in text_line_dict.items():
+            self.insert_text(line_num, text)
 
     def delete_text(self, line_num: int):
         if line_num > self.capacity:
@@ -50,13 +50,13 @@ class File:
         elif self.file_list[line_num-1] == "":
             print(f" Line number passed {line_num} does not contain any text")
         else:
-            if self.copy_var.size() > 0:
+            if len(self.copy_var) > 0:
                 # pop the element and store next one
                 self.copy_var.pop()
             self.copy_var.append(self.file_list[line_num-1])
     
     def paste_text(self, line_num: int):
-        if self.copy_var_pair.size() == 0:
+        if len(self.copy_var) == 0:
             print("Nothing copied, Please copy first")
         elif line_num > self.capacity:
             print("---Line passed is bigger than the file length-----")

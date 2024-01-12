@@ -32,12 +32,39 @@ def run_handler():
     print("---Enter texts to insert and also on which line numbers----")
 
     user_input = input("Enter key-value pairs separated by commas (e.g., key1:value1,key2:value2): ")
+    if user_input.startswith("{") and user_input.endswith("}"):
+        user_input = user_input[1:-1]  
     data = {}
     for pair in user_input.split(","):
         key, value = pair.split(":")
-        data[key.strip()] = value.strip() 
+        print(type(key))
+        key = int(key)
+        data[key] = value.strip() 
 
-     file_1_obj.insert_text_multiple_lines(data)
+    file_1_obj.insert_text_multiple_lines(data)
+
+    print("\n")
+    print("---Delete text from a specific line_num--")
+    line_num_to_delete = int(input("Enter line number to delete text from: "))
+
+    file_1_obj.delete_text(line_num_to_delete)
+
+    print("\n")
+
+    print("---Copy text from a specific line_num----")
+    print("\n")
+    line_num_to_copy = int(input("Enter line number to copy text from: "))
+
+    file_1_obj.copy_text(line_num_to_copy)
+
+    print("\n")
+    print("---Paste text to a specific line_num----")
+    print("\n")
+    line_num_to_paste = int(input("Enter line number to paste text to: "))
+    
+    file_1_obj.paste_text(line_num_to_paste)
+
+    
 
 
 if __name__ == "__main__":
