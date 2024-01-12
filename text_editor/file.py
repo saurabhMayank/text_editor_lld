@@ -7,26 +7,30 @@ class File:
 
     def __init__(self, capacity):
         self.capacity = capacity
-        self.file_list = [(index + 1, "") for index in range(self.capacity)]
-        # its a list
+        self.file_list = [""]*self.capacity
+        # copy_var is a list
         # list will always contain 1 element
-        # that is the copied text
+        # that is the current copied text
         self.copy_var = []
 
 
     def insert_text(self, line_num: int, text: str):
         if line_num > self.capacity:
-            print("---Line passed is bigger than the file length-----")
+            print(f"---Line Num {line_num} passed is bigger than the file length-----")
+            print("")
         else:
             # file_list is 0 indexed that is why
-            file_list[line_num-1] = text
+            print("---line_num")
+            self.file_list[line_num-1] = text
             print("----text inserted---")
             print("\n")
             print("----display file---")
             print("\n")
             self.display_file()
-
-
+    
+    def insert_text_multiple_lines(self, text_line_dict: dict):
+        for line_num, text in text_line_dict:
+            insert_text(line_num, text)
 
     def delete_text(self, line_num: int):
         if line_num > self.capacity:
@@ -66,13 +70,18 @@ class File:
     def delete_file(self):
         # reassign the list to empty value
         # for all indexes
-        self.file_list = [(index + 1, "") for index in range(self.capacity)]
+        self.file_list = [0]*self.capacity
+
         self.display_file()
 
     
     def display_file(self):
-        for index, item in self.file_list:
-            print(f"{index}. {item}")
+        # print(self.file_list)
+        # for index, item in self.file_list:
+        #     print(f"{index}. {item}")
+
+        for i, item in enumerate(self.file_list, start=1):
+            print(f"{i}. {item}")
     
     def undo(self):
         pass
