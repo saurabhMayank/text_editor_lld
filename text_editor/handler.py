@@ -10,6 +10,7 @@ def run_handler():
 
     text_editor_singelton_obj = TextEditorSingleton()
 
+
     print("\n")
     print("---Create a File with a defined file size---")
     file_name = input("Enter file name: ")
@@ -31,7 +32,7 @@ def run_handler():
     print("\n")
     print("---Enter texts to insert and also on which line numbers----")
 
-    user_input = input("Enter key-value pairs separated by commas (e.g., key1:value1,key2:value2): ")
+    user_input = input("Enter key-value pairs separated by commas (e.g., lineNum1:text1,lineNum2:text2): ")
     if user_input.startswith("{") and user_input.endswith("}"):
         user_input = user_input[1:-1]  
     data = {}
@@ -65,7 +66,5 @@ def run_handler():
     file_1_obj.paste_text(line_num_to_paste)
 
     
-
-
 if __name__ == "__main__":
     run_handler()

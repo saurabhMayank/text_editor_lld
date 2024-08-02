@@ -60,7 +60,8 @@ class File:
             raise TextNotFoundError(f" Line number passed {line_num} does not contain any text")
         else:
             if len(self.copy_var) > 0:
-                # pop the element and store next one
+                # if there is an element already in copy_var
+                # remove that element so we can store the next one
                 self.copy_var = ""
             self.copy_var = self.file_list[line_num-1]
     
