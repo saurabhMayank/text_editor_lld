@@ -1,5 +1,5 @@
-from text_editor.action import Action
-from text_editor.errors import SizeOutofBoundsError, TextNotFoundError, NoTextCopiedError
+from action import Action
+from errors import SizeOutofBoundsError, TextNotFoundError, NoTextCopiedError
 
 class File:
     undo_stack: Action = []
@@ -8,6 +8,8 @@ class File:
 
     def __init__(self, capacity):
         self.capacity = capacity
+        # every line is an element in file_list arr
+        # is initialised as empty string
         self.file_list = [""]*self.capacity
         # copy_var is a empty string
         self.copy_var = ""
@@ -16,6 +18,10 @@ class File:
     def insert_text(self, line_num: int, text: str):
         """
         Insert text into single line
+        Responsibility to 
+        -> check if passed line number exceeds the capacity
+        -> Insert the text in the give line num
+
         """
         if line_num > self.capacity:
             raise SizeOutofBoundsError(f"Line Num {line_num} passed is bigger than the file length")
@@ -30,6 +36,8 @@ class File:
     def insert_text_multiple_lines(self, text_line_dict: dict):
         """
         Insert text into multiple lines
+        Responsiblity to internally call the insert_text function
+        for the input 
         """
         for line_num, text in text_line_dict.items():
             self.insert_text(line_num, text)
@@ -37,6 +45,10 @@ class File:
     def delete_text(self, line_num: int):
         """
         Delete text from a single line
+        Responsibility of this function
+        -> Check if the line_num is not exceeding the capacity
+        -> Check if line_num passed has any text or not
+        -> Replace the content with empty string
         """
         if line_num > self.capacity:
             raise SizeOutofBoundsError(f"Line Num {line_num} passed is bigger than the file length")
@@ -53,6 +65,11 @@ class File:
     def copy_text(self, line_num: int):
         """
         Copy text into single line
+         Responsibility of this function
+        -> Check if the line_num is not exceeding the capacity
+        -> Check if line_num passed has any text or not
+        -> Copy the text into instance variable
+
         """
         if line_num > self.capacity:
             raise SizeOutofBoundsError(f"Line Num {line_num} passed is bigger than the file length")

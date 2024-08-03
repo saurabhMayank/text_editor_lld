@@ -1,5 +1,5 @@
 
-from text_editor.file import File
+from file import File
 
 class TextEditorSingleton:
     # class instance
@@ -16,6 +16,9 @@ class TextEditorSingleton:
     
 
     def create_file(self, name: str, capacity: int):
+        """
+        Functional API to create files
+        """
         print("--File Created---")
         # initialize instance of the file and return
         file_obj = File(capacity)
